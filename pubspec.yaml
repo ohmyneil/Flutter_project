@@ -1,0 +1,42 @@
+name: final_project
+description: "A new Flutter project."
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.8.1
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  image_picker: ^1.1.1
+  video_player: ^2.2.10
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/logo.png
+    - assets/philippine_airlines.png
+    - assets/cebu_pacific.png
+    - assets/boracay_tour.png
+    - assets/bangkok_tour.png
+    - assets/mediterranean_cruise.png
+    - assets/passport.png
+    - assets/japan_visa.png
+    - assets/bohol.jpg
+    - assets/boracay.jpg
+    - assets/palawan.jpg
+    - assets/mediterranean_elegance.jpg
+    - assets/GIF.gif
+    - assets/LOGIN_GIF.gif
+    - assets/SPLASH_GIF.gif
+    - assets/video.mp4
+    - assets/mediterranean_cruise.png
