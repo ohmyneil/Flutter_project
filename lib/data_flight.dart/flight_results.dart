@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:final_project/data_flight.dart/flight_details.dart';
+import 'flight_details.dart';
 
 class FlightResultsPage extends StatelessWidget {
   final String from;
@@ -17,172 +17,223 @@ class FlightResultsPage extends StatelessWidget {
     required this.travelClass,
   });
 
-  List<Map<String, String>> getFlightResults() {
-    final dep = from.toLowerCase();
-    final arr = to.toLowerCase();
-    final key = '$dep-$arr-$travelClass'.toLowerCase();
-
-    final Map<String, List<Map<String, String>>> simulatedDB = {
-      'manila-singapore-economy': [
-        {'airline': 'Scoot', 'time': '6:00 AM', 'price': '₱7,800'},
-        {'airline': 'Jetstar', 'time': '11:00 AM', 'price': '₱8,300'},
-      ],
-      'manila-singapore-business': [
-        {'airline': 'Singapore Airlines', 'time': '9:00 AM', 'price': '₱22,000'},
-        {'airline': 'Cebu Pacific', 'time': '5:00 PM', 'price': '₱18,500'},
-      ],
-      'manila-singapore-first class': [
-        {'airline': 'Singapore Airlines', 'time': '1:00 PM', 'price': '₱35,000'},
-        {'airline': 'PAL', 'time': '7:00 PM', 'price': '₱30,000'},
-      ],
-      'manila-tokyo-economy': [
-        {'airline': 'ANA', 'time': '10:00 AM', 'price': '₱19,000'},
-        {'airline': 'JAL', 'time': '3:00 PM', 'price': '₱21,000'},
-      ],
-      'manila-tokyo-business': [
-        {'airline': 'JAL', 'time': '8:00 AM', 'price': '₱28,000'},
-        {'airline': 'ANA', 'time': '2:00 PM', 'price': '₱29,500'},
-      ],
-      'manila-tokyo-first class': [
-        {'airline': 'ANA', 'time': '9:00 AM', 'price': '₱55,000'},
-        {'airline': 'JAL', 'time': '1:30 PM', 'price': '₱60,000'},
-      ],
-      'manila-cebu-economy': [
-        {'airline': 'Cebu Pacific', 'time': '6:00 AM', 'price': '₱2,800'},
-        {'airline': 'AirAsia', 'time': '10:00 AM', 'price': '₱3,100'},
-      ],
-      'manila-cebu-business': [
-        {'airline': 'PAL', 'time': '7:30 AM', 'price': '₱6,500'},
-        {'airline': 'Cebu Pacific', 'time': '3:30 PM', 'price': '₱5,900'},
-      ],
-      'manila-cebu-first class': [
-        {'airline': 'PAL', 'time': '9:00 AM', 'price': '₱9,000'},
-        {'airline': 'Cebu Pacific', 'time': '5:00 PM', 'price': '₱8,800'},
-      ],
-      'cebu-manila-economy': [
-        {'airline': 'Cebu Pacific', 'time': '8:00 AM', 'price': '₱2,900'},
-        {'airline': 'AirAsia', 'time': '4:00 PM', 'price': '₱3,000'},
-      ],
-      'cebu-singapore-economy': [
-        {'airline': 'Scoot', 'time': '12:00 PM', 'price': '₱10,000'},
-        {'airline': 'Jetstar', 'time': '6:00 PM', 'price': '₱10,800'},
-      ],
-      'cebu-singapore-business': [
-        {'airline': 'Singapore Airlines', 'time': '1:00 PM', 'price': '₱21,000'},
-        {'airline': 'Scoot', 'time': '7:30 PM', 'price': '₱19,900'},
-      ],
-      'cebu-singapore-first class': [
-        {'airline': 'Singapore Airlines', 'time': '10:00 AM', 'price': '₱33,000'},
-        {'airline': 'PAL', 'time': '4:00 PM', 'price': '₱30,500'},
-      ],
-      'cebu-tokyo-economy': [
-        {'airline': 'ANA', 'time': '6:00 AM', 'price': '₱24,000'},
-        {'airline': 'JAL', 'time': '11:00 AM', 'price': '₱23,500'},
-      ],
-      'cebu-tokyo-first class': [
-        {'airline': 'JAL', 'time': '2:00 PM', 'price': '₱56,000'},
-        {'airline': 'ANA', 'time': '5:00 PM', 'price': '₱58,200'},
-      ],
-      'tokyo-manila-economy': [
-        {'airline': 'PAL', 'time': '7:00 AM', 'price': '₱18,000'},
-        {'airline': 'Cebu Pacific', 'time': '6:00 PM', 'price': '₱17,000'},
-      ],
-      'tokyo-manila-business': [
-        {'airline': 'ANA', 'time': '8:00 AM', 'price': '₱30,000'},
-        {'airline': 'JAL', 'time': '2:00 PM', 'price': '₱28,000'},
-      ],
-      'tokyo-manila-first class': [
-        {'airline': 'ANA', 'time': '9:00 AM', 'price': '₱50,000'},
-        {'airline': 'JAL', 'time': '1:00 PM', 'price': '₱52,000'},
-      ],
-    };
-
-    return simulatedDB[key] ??
-        [
-          {'airline': 'SkyAir', 'time': '6:00 AM', 'price': '₱14,000'},
-          {'airline': 'BudgetWings', 'time': '4:00 PM', 'price': '₱13,500'},
-        ];
-  }
-
   @override
   Widget build(BuildContext context) {
-    final flights = getFlightResults();
+    final List<Map<String, dynamic>> flights = [
+      {
+        'airline': 'SkyWings',
+        'departure': '08:30',
+        'arrival': '16:15',
+        'duration': '7h 45m',
+        'stops': 'Direct',
+        'class': 'Economy',
+        'price': '\$599',
+        'rating': '4.8'
+      },
+      {
+        'airline': 'AirElite',
+        'departure': '14:15',
+        'arrival': '23:35',
+        'duration': '9h 20m',
+        'stops': '1 Stop',
+        'class': 'Economy',
+        'price': '\$749',
+        'rating': '4.6'
+      },
+      {
+        'airline': 'CloudJet',
+        'departure': '19:45',
+        'arrival': '03:55+1',
+        'duration': '8h 10m',
+        'stops': 'Direct',
+        'class': 'Business',
+        'price': '\$899',
+        'rating': '4.9'
+      }
+    ];
 
     return Scaffold(
-      backgroundColor: const Color(0xFFF0F4F8),
-      appBar: AppBar(
-        title: const Text('Available Flights'),
-        backgroundColor: Colors.teal,
-        foregroundColor: Colors.white,
-      ),
+      backgroundColor: const Color(0xFFF8FAFC),
       body: Padding(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 32),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            buildDetail('From', from),
-            buildDetail('To', to),
-            buildDetail('Departure', formatDate(departureDate)),
-            buildDetail('Return', formatDate(returnDate)),
-            buildDetail('Class', travelClass),
-            const SizedBox(height: 20),
-            const Text(
-              'Flight Options:',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-                color: Colors.black87,
+            // Back to Search
+            GestureDetector(
+              onTap: () => Navigator.pop(context),
+              child: const Text(
+                '← Back to Search',
+                style: TextStyle(color: Colors.blueGrey, fontSize: 14),
               ),
             ),
-            const SizedBox(height: 10),
+            const SizedBox(height: 12),
+            Text(
+              '$from → $to',
+              style: const TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black87),
+            ),
+            Text(
+              '${formatDate(departureDate)} • ${flights.length} flights found',
+              style: const TextStyle(fontSize: 14, color: Colors.grey),
+            ),
+            const SizedBox(height: 20),
+            // Flight Cards
             Expanded(
               child: ListView.builder(
                 itemCount: flights.length,
                 itemBuilder: (context, index) {
                   final flight = flights[index];
-                  return AnimatedContainer(
-                    duration: const Duration(milliseconds: 300),
-                    curve: Curves.easeInOut,
-                    margin: const EdgeInsets.symmetric(vertical: 8),
-                    child: Card(
-                      elevation: 3,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(14),
-                      ),
-                      child: ListTile(
-                        leading: const Icon(Icons.flight_takeoff, color: Colors.indigo),
-                        title: Text(
-                          '${flight['airline']} - ${flight['time']}',
-                          style: const TextStyle(fontWeight: FontWeight.w600),
+                  return Container(
+                    margin: const EdgeInsets.only(bottom: 16),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(12),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black12.withOpacity(0.05),
+                          blurRadius: 10,
+                          offset: const Offset(0, 4),
                         ),
-                        subtitle: Text(
-                          'Price: ${flight['price']}',
-                          style: const TextStyle(color: Colors.black54),
-                        ),
-                        trailing: const Icon(Icons.arrow_forward_ios_rounded, size: 16),
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => FlightDetailsPage(
-                                from: from,
-                                to: to,
-                                airline: flight['airline'] ?? '',
-                                time: flight['time'] ?? '',
-                                price: flight['price'] ?? '',
-                                travelClass: travelClass,
-                                departureDate: departureDate,
-                                returnDate: returnDate,
-                              ),
+                      ],
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 16, horizontal: 16),
+                      child: Row(
+                        children: [
+                          // Airline Icon
+                          Column(
+                            children: [
+                              const Icon(Icons.flight, size: 32, color: Colors.blue),
+                              const SizedBox(height: 4),
+                              Text(flight['rating'], style: const TextStyle(fontSize: 12)),
+                            ],
+                          ),
+                          const SizedBox(width: 16),
+                          // Flight Info
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  flight['airline'],
+                                  style: const TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 16),
+                                ),
+                                const SizedBox(height: 4),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(flight['departure'],
+                                        style: const TextStyle(
+                                            fontWeight: FontWeight.bold)),
+                                    const Icon(Icons.arrow_forward, size: 16),
+                                    Text(flight['arrival'],
+                                        style: const TextStyle(
+                                            fontWeight: FontWeight.bold)),
+                                  ],
+                                ),
+                                const SizedBox(height: 4),
+                                Row(
+                                  children: [
+                                    Text(from, style: const TextStyle(fontSize: 12)),
+                                    const SizedBox(width: 6),
+                                    Container(
+                                      padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                                      decoration: BoxDecoration(
+                                        color: Colors.blue.shade50,
+                                        borderRadius: BorderRadius.circular(10),
+                                      ),
+                                      child: Text(flight['stops'],
+                                          style: const TextStyle(
+                                              fontSize: 10,
+                                              color: Colors.blue)),
+                                    ),
+                                    const SizedBox(width: 6),
+                                    Text(to, style: const TextStyle(fontSize: 12)),
+                                  ],
+                                ),
+                              ],
                             ),
-                          );
-                        },
+                          ),
+                          const SizedBox(width: 16),
+                          // Pricing and Button
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              Container(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 8, vertical: 2),
+                                decoration: BoxDecoration(
+                                  border: Border.all(
+                                      color: Colors.grey.shade300),
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                child: Text(
+                                  flight['class'],
+                                  style: const TextStyle(fontSize: 10),
+                                ),
+                              ),
+                              const SizedBox(height: 4),
+                              Text(
+                                flight['price'],
+                                style: const TextStyle(
+                                    color: Colors.blue,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              const Text(
+                                'per person',
+                                style:
+                                    TextStyle(fontSize: 10, color: Colors.grey),
+                              ),
+                              const SizedBox(height: 8),
+                              ElevatedButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (_) => FlightDetailsPage(
+                                        from: from,
+                                        to: to,
+                                        departureDate: departureDate,
+                                        returnDate: returnDate,
+                                        travelClass: travelClass,
+                                        airline: flight['airline'],
+                                        time: flight['departure'],
+                                        price: flight['price'],
+                                      ),
+                                    ),
+                                  );
+                                },
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: const Color(0xFF2563EB),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 20, vertical: 12),
+                                ),
+                                child: const Text(
+                                  'Select Flight',
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 13),
+                                ),
+                              ),
+                            ],
+                          )
+                        ],
                       ),
                     ),
                   );
                 },
               ),
-            ),
+            )
           ],
         ),
       ),
@@ -191,29 +242,6 @@ class FlightResultsPage extends StatelessWidget {
 
   String formatDate(DateTime? date) {
     if (date == null) return 'N/A';
-    return '${date.month}/${date.day}/${date.year}';
-  }
-
-  Widget buildDetail(String label, String value) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 4),
-      child: Row(
-        children: [
-          SizedBox(
-            width: 100,
-            child: Text(
-              '$label:',
-              style: const TextStyle(fontWeight: FontWeight.w600),
-            ),
-          ),
-          Expanded(
-            child: Text(
-              value,
-              style: const TextStyle(color: Colors.black87),
-            ),
-          ),
-        ],
-      ),
-    );
+    return '${date.year}-${date.month.toString().padLeft(2, '0')}-${date.day.toString().padLeft(2, '0')}';
   }
 }
